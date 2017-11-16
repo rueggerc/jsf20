@@ -120,9 +120,9 @@ public class AccountsBean extends BaseBean {
 		this.chosenAccount = account;
 	}
 	
-	public String submit() {
+	public String doContinue() {
 		logger.info("---- SUBMIT BEGIN---");
-		return "accounts";
+		return "page1";
 	}
 
 	public BigDecimal getFundingAmount() {

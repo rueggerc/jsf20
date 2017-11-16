@@ -16,7 +16,7 @@
 <ui:define name="content">
 #{accountsBean.initialView}
 
-<h:form>
+<h:form id="accountsForm">
 	<h:inputHidden id="requestResultState" value="#{accountsBean.requestResultState}" />
 	<p:panel id="mainPanel" header="Accounts">
 	<p:dataTable id="accounts" var="accountBean" value="#{accountsBean.accounts}">
@@ -36,7 +36,7 @@
 	
 	<div style="margin-top:20px;"/>
 	<div class="boldContent">
-		<h:selectOneMenu value="#{accountsBean.chosenAccountID}" style="width:500px;">
+		<h:selectOneMenu id="selectAccounts" value="#{accountsBean.chosenAccountID}" style="width:500px;">
 			<f:selectItems value="#{accountsBean.accountSelectMap}"/>
 			<f:ajax event="valueChange" listener="#{accountsBean.accountSelectedAJAXEvent}"
 			   render="requestResultState btnContinue"
@@ -46,7 +46,7 @@
 	
 	<h:panelGroup id="buttonPanel" layout="block" styleClass="buttonBar shadow" style="margin-top:40px;">
 		<h:commandButton id="btnContinue" value="Continue" disabled="#{accountsBean.continueDisabled}"
-		   action="#{accountsBean.submit}" styleClass="btn orange buttonRightJustified" />
+		   action="#{accountsBean.doContinue}" styleClass="btn orange buttonRightJustified" />
 	</h:panelGroup>
 	
 </p:panel>
