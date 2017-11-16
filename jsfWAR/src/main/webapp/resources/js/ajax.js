@@ -2,7 +2,7 @@
 // ======================== AJAX FUNCTIONS BEGIN
 function ajaxEventHandler(data) {
   if ((data.status === "complete" && !data.responseText) || data.type === "error") {
-	  alert("AJAX EVENT HANDLER ERROR TYPE=" + data.responseText);
+	  alert("AJAX EVENT HANDLER ERROR=" + data.responseText);
 	  redirectToErrorPage();
   }
 } 
@@ -14,13 +14,6 @@ function redirectToErrorPage() {
    window.location = 'errorPage.xhtml?errorPageMessage=error_system_down';
 }
 
-function checkAjaxResponse() {
-	var ajaxResult = document.getElementById('formID:requestResultState').value;
-	if (ajaxResult === "fail") {
-		redirectToErrorPage();
-		return false;
-	}
-}
 
 // AJAX Cursor
 var defaultCursor;
