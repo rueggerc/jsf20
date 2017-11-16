@@ -1,0 +1,35 @@
+
+apply plugin: 'war'
+apply plugin: 'eclipse-wtp'
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+	compile 'log4j:log4j:1.2.17'
+	compile 'org.apache.myfaces.core:myfaces-api:2.2.4'
+	compile 'org.apache.myfaces.core:myfaces-impl:2.2.4'
+	compile 'org.primefaces:primefaces:4.0'
+	providedCompile 'javax.servlet:servlet-api:2.5'
+	testCompile 'junit:junit:4.12'
+}
+
+
+ext {
+	tomcatHome = 'C:/apache-tomcat-8.0.46'
+}
+
+task deploy {
+	doLast {
+		println 'Deploy to Tomcat BEGIN'
+		println tomcatHome
+		println buildDir
+		copy {
+			from "${buildDir}/libs"
+			into "${tomcatHome}/webapps"
+			include '*.war'
+		}
+	}
+}
